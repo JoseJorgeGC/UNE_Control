@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="hidden" value="estado-sen" name="form-type">
+        {{form_estado_sen.fecha|add_label_class:"block text-sm font-medium leading-6 text-gray-900"}}
+        {% render_field form_estado_sen.fecha type="date" name="fecha" %}
+
+        {{form_estado_sen.prevision_de_afectacion|add_label_class:"block text-sm font-medium leading-6 text-gray-900"}}
+        {% render_field form_estado_sen.prevision_de_afectacion type="number" name="prevision_de_afectacion" %}
+
+        {{form_estado_sen.afectacion_real|add_label_class:"block text-sm font-medium leading-6 text-gray-900"}}
+        {% render_field form_estado_sen.afectacion_real type="number" name="afectacion_real" %}
+
+        {{form_estado_sen.tiempo_de_afectacion|add_label_class:"block text-sm font-medium leading-6 text-gray-900"}}
+        {% render_field form_estado_sen.tiempo_de_afectacion type="number" name="tiempo_de_afectacion" %}
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="hidden" value="afectacion" name="form-type">
+        <label for="circuito">Circuito:</label>
+        {% render_field form_afectaciones.circuito type="text" id="circuito" name="circuito" %}
+
+        <label for="fecha">Fecha:</label>
+        {% render_field form_afectaciones.fecha type="date" id="fecha" name="fecha" %}
+
+        <label for="hora_afectacion">Hora Afectacion:</label>
+        {% render_field form_afectaciones.hora_afectacion type="time" id="hora_afectacion" name="hora_afectacion" %}
+
+        <label for="hora_restablecido">Hora Restablecido:</label>
+        {% render_field form_afectaciones.hora_restablecido type="time" id="hora_restablecido" name="hora_restablecido" %}
+
+    <button type="submit">Enviar</button>
+    </form>
+</div>
+{% endblock content %}

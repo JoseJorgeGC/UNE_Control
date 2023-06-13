@@ -33,3 +33,13 @@ class Logs(models.Model):
 
     def __str__(self):
         return f"{self.circuito} {self.afectado} - {self.fecha}"
+
+class Estado_SEN(models.Model):
+    id = models.AutoField(primary_key = True)
+    fecha = models.DateField()
+    prevision_de_afectacion = models.IntegerField()
+    afectacion_real = models.IntegerField()
+    tiempo_de_afectacion = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.fecha}"
